@@ -4,6 +4,8 @@
 <% if logged_in? %>
 <h1>こんにちは、<%=  current_user.user_name %>さん</h1>
 <p>ユーザー用ページです。</p>
+<p><%= current_user.image_url %></p>
+<p><%= current_user.user_name %></p>
 <% else %>
 <p>ログインしてください</p>
 <% end %>

@@ -6,7 +6,7 @@ class User < ApplicationRecord
     #provider毎に与えられる識別用のユニークid
     uid = auth[:uid]
     #user_nameとimageはさらにinfoのネストになっている
-    user_name = auth[:info][:user_name]
+    user_name = auth[:info][:name]
     image_url = auth[:info][:image]
 
     #該当ユーザ無しなら新規に作成する
@@ -15,4 +15,6 @@ class User < ApplicationRecord
       user.image_url = image_url
     end
   end
+
+
 end
