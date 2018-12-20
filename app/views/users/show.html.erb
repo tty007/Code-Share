@@ -1,2 +1,8 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>マイページ</h1>
+<% if logged_in? %>
+	<h1>こんにちは、<%=  current_user.user_name %>さん</h1>
+	<p>ユーザー用ページです。</p>
+	<p><img src="<%= current_user.image_url %>"></p>
+<% else %>
+	<p>不正なページ遷移です。ログインしてください</p>
+<% end %>
