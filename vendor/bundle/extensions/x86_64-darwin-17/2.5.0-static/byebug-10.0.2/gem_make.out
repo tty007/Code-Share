@@ -1,0 +1,19 @@
+current directory: /Users/tatsuya/rails-space/application/code-share/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+/Users/tatsuya/.rbenv/versions/2.5.1/bin/ruby -r ./siteconf20181220-18194-acl253.rb extconf.rb
+creating Makefile
+
+current directory: /Users/tatsuya/rails-space/application/code-share/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /Users/tatsuya/rails-space/application/code-share/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.bundle
+
+current directory: /Users/tatsuya/rails-space/application/code-share/vendor/bundle/gems/byebug-10.0.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.bundle ./.gem.20181220-18194-gl7hta/byebug
