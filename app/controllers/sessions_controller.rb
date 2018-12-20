@@ -7,6 +7,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    #reset_sessionで全てのセッション情報を削除
     reset_session
     flash[:notice] = "ログアウトしました。"
     redirect_to root_path

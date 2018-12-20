@@ -1,0 +1,7 @@
+<header>
+  <% if logged_in? %>
+    <%= link_to 'Logout', '/logout' %>
+  <% else %>
+    <%= link_to 'Twitter Login', '/auth/twitter' %>
+  <% end %>
+</header>
