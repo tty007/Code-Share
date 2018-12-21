@@ -30,7 +30,7 @@
               <li><a href="/auth/twitter/">Twitterでログイン</a></li>
             <% else %>
               <li><a href="/logout">ログアウト</a></li>
-              <li><a href="/users/show">マイページ</a></li>
+              <li><%= link_to 'マイページ', profile_path %></li>
             <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="#">開発者に恵みを与える</a></li>

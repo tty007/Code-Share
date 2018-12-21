@@ -1,14 +1,14 @@
-<div class="container">
-	<div class="center">
-		<div class="bg_wrapper center">
-			<% if logged_in? %>
+<% if logged_in? %>
+	<div class="container">
+		<div class="center">
+			<div class="bg_wrapper center">
 				<%# ユーザーイメージをオリジナルサイズに置換 %>
 				<p><img src="<%= current_user.image_url.gsub(/_normal/, '') %>" class="user_profile_image"></p>
 				<p><%= current_user.user_name %></p>
-				<p class="user-description"><%= current_user.description %></p>
-			<% else %>
-				<p>不正なページ遷移です。ログインしてください</p>
-			<% end %>
+				<p class="user-description"><%= current_user.description %></p>			
+			</div>
 		</div>
 	</div>
-</div>
+<% else %>
+	<div class="alert alert-danger" role="alert">不正なページ遷移です。ログインしてください</div>
+<% end %>

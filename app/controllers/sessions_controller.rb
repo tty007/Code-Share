@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:notice] = "ユーザー認証が完了しました。"
-      redirect_to users_show_path
+      redirect_to profile_path
     else
       redirect_to root_path, notice: "失敗しました。"
     end
