@@ -5,7 +5,7 @@
 				<%# ユーザーイメージをオリジナルサイズに置換 %>
 				<p><img src="<%= current_user.image_url.gsub(/_normal/, '') %>" class="user_profile_image"></p>
 				<p><%= current_user.user_name %></p>
-				<p><%= current_user.description %></p>
+				<p class="user-description"><%= current_user.description %></p>
 			<% else %>
 				<p>不正なページ遷移です。ログインしてください</p>
 			<% end %>

@@ -8,3 +8,17 @@
         width: 150px;
     }
 }
+
+.user-description {
+    font-weight: bold;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #bbb;
+    color: #fff;
+    padding: 10px;
+    margin: 10px auto;
+    @include media {
+        width: 95%;
+        font-size: 0.9rem;
+    }
+}
