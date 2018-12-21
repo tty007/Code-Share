@@ -4,6 +4,16 @@
         @content
     }
 }
+
+.navbar-brand {
+    padding: 0;
+}
+.logo-image {
+    height: auto;
+    width: 200px;
+    padding: 10px;
+}
+
 .center {
     text-align: center;
     margin: 0 auto;
