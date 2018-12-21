@@ -22,6 +22,10 @@ gem 'omniauth-twitter'
 #env-var
 gem 'dotenv-rails'
 
+#for using bootstrap3
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+
 #production-environment
 gem 'pg', group: :production
 
