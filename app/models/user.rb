@@ -14,6 +14,8 @@
 
 class User < ApplicationRecord
 
+  has_many :code
+
   def self.find_or_create_from_auth(auth)
     #providerはTwitterのはず
     provider = auth[:provider]
