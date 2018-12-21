@@ -1,7 +1,17 @@
+@keyframes floating{
+    0% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(3px);
+    }
+}
+
 .user_profile_image {
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    animation: floating 0.5s ease-in-out infinite alternate;
 
     @include media {
         height: 150px;
