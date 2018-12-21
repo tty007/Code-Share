@@ -38,8 +38,7 @@
 .bg_wrapper {
     background-color: #efefef;
     width: 70%;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin: 30px auto;
     padding: 30px;
     border-radius: 10px;
     @include media {

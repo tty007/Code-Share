@@ -24,8 +24,8 @@ module ApplicationHelper
       else
         lang = language
       end
-
-      CodeRay.scan(code, lang).div
+      #:line_numbersで:inline指定で行番号表示。:line_number_anchorsはなんのプロパティか不明
+      CodeRay.scan(code, lang).div(:line_numbers => :inline, :line_number_anchors => false)
     end
   end
 

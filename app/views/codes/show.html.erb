@@ -1,3 +1,17 @@
-<h1>Codes#show</h1>
-<p>Find me in app/views/codes/show.html.erb</p>
-<p><%= markdown(@code.body).html_safe %></p>
+<div class="container">
+  <div class="margin-top-wrapper">
+    <div class="panel panel-info">
+      <div class="panel-heading">ファイルの概要</div>
+      <div class="panel-body">
+        <%= @code.description %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><> <%= "#{@code.filename}.twicode" %></div>
+        <div class="panel-body">
+          <p><%= markdown(@code.body).html_safe %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
