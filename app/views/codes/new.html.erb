@@ -1,2 +1,24 @@
-<h1>Codes#new</h1>
-<p>Find me in app/views/codes/new.html.erb</p>
+<div class="container">
+  <div class="center margin-top-wrapper">
+      <%= form_with model: @code, local: true do |f| %>
+        <div class="form-group">
+          <%= f.text_field :filename, class: 'form-control', placeholder: 'Filename including extention...' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field :description, class: 'form-control', placeholder: 'Summary of the code...' %>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Code</div>
+            <div class="form-group textarea-wrapper">
+              <%= f.text_area :body, class: 'form-control textarea-body' %>
+            </div>
+          </div>
+        </div>
+        <div class="center margin-bottom-wrapper">
+          <%= f.submit 'コードを作成', class: 'btn btn-success dropdown-toggle' %>
+        </div>
+    <% end %>
+  </div>
+</div>

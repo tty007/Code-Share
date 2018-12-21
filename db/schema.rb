@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_021232) do
+ActiveRecord::Schema.define(version: 2018_12_21_074104) do
+
+  create_table "codes", force: :cascade do |t|
+    t.string "filename"
+    t.string "description"
+    t.text "body"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "uuid", default: "b6bae27f-92f1-4523-875d-34e5f528f6ea", null: false
+    t.index ["user_id"], name: "index_codes_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "provider"
