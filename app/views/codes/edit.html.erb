@@ -1,2 +1,39 @@
-<h1>Codes#edit</h1>
-<p>Find me in app/views/codes/edit.html.erb</p>
+<div class="container">
+  <div class="center margin-top-wrapper">
+      <%= form_with model: @code, local: true do |f| %>
+        <div class="form-group">
+          <%= f.text_field :filename, class: 'form-control', placeholder: 'Filename including extention...' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.text_field :description, class: 'form-control', placeholder: 'Summary of the code...' %>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">Code</div>
+            <div class="form-group textarea-wrapper">
+              <%= f.text_area :body, class: 'form-control textarea-body TabforbiddenTextArea' %>
+            </div>
+          </div>
+        </div>
+        <div class="center margin-bottom-wrapper">
+          <%= f.submit 'コードをアップデート', class: 'btn btn-success dropdown-toggle' %>
+        </div>
+    <% end %>
+  </div>
+</div>
+<script>
+  // テキストエリア内でタブ移行を禁止するコード
+  $(function(){
+	$(".TabforbiddenTextArea").keydown(function(e){
+    if (e.keyCode === 9) {
+        e.preventDefault();
+        var elem = e.target;
+        var val = elem.value;
+        var pos = elem.selectionStart;
+        elem.value = val.substr(0, pos) + '\t' + val.substr(pos, val.length);
+        elem.setSelectionRange(pos + 1, pos + 1);
+      }
+    });
+  });
+</script>

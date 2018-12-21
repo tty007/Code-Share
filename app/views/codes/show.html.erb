@@ -6,8 +6,16 @@
         <%= @code.description %>
       </div>
     </div>
+
+    <%# もしもコードユーザが自分なら %>
+    <% if current_user.id == @code.user_id %>
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#">Code</a></li>
+      <li role="presentation"><%= link_to '編集', edit_code_path(@code) %></li>
+    </ul>
+    <% end %>
     <div class="panel panel-default">
-      <div class="panel-heading"><> <%= "#{@code.filename}.twicode" %></div>
+      <div class="panel-heading"><%= "<>#{@code.filename}.twicode" %></div>
         <div class="panel-body">
           <p><%= markdown(@code.body).html_safe %></p>
         </div>
@@ -15,3 +23,9 @@
     </div>
   </div>
 </div>
+
+<% if current_user.id == @code.user_id %>
+  <div class="center margin-bottom-wrapper">
+    <button type="button" class="btn btn-danger"><%= "<>#{@code.filename}.twicode" %>を削除</button>
+  </div>
+<% end %>

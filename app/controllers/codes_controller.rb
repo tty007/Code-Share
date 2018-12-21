@@ -26,12 +26,11 @@ class CodesController < ApplicationController
   end
 
   def edit
-    current_user.codes.friendly.find(params[:id])
+    @code = current_user.codes.friendly.find(params[:id])
   end
 
   def update
     @code = current_user.codes.friendly.find(params[:id])
-    @code = attribute(code_params)
     if @code.update(code_params)
       redirect_to :action => 'show'
     else
