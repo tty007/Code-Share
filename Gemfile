@@ -27,6 +27,10 @@ gem 'dotenv-rails'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 
+#for using Markdown and Syntax highlight editor
+gem 'redcarpet'
+gem 'coderay'
+
 #production-environment
 gem 'pg', group: :production
 
