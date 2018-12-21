@@ -26,6 +26,6 @@
 
 <% if current_user.id == @code.user_id %>
   <div class="center margin-bottom-wrapper">
-    <button type="button" class="btn btn-danger"><%= "<>#{@code.filename}.twicode" %>を削除</button>
+    <button type="button" class="btn btn-danger"><%= link_to "<>#{@code.filename}.twicodeを削除", "/codes/#{@code.uuid}", method: :delete %></button>
   </div>
 <% end %>
