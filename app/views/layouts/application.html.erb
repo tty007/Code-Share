@@ -12,9 +12,7 @@
   <body>
     <%= render 'partial/navbar' %>
     <% if flash[:notice] %>
-      <div class="notice">
-        <%= flash[:notice]%>
-      </div>
+      <div class="alert alert-info notice" role="alert"><%= flash[:notice]%></div>
     <% end %>
     <%= yield %>
   </body>
