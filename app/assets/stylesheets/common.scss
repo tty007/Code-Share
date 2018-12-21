@@ -1,0 +1,20 @@
+//メディアクエリ定義
+@mixin media($width-media: 700px) {
+    @media only screen and (max-width: $width-media) {
+        @content
+    }
+}
+.center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.bg_wrapper {
+    background-color: #efefef;
+    width: 70%;
+    padding: 30px;
+    border-radius: 5%;
+    @include media {
+        width: 85%;
+    }
+}

@@ -8,6 +8,7 @@ class User < ApplicationRecord
     #user_nameとimageはさらにinfoのネストになっている
     user_name = auth[:info][:name]
     image_url = auth[:info][:image]
+    user_description = auth[:info][:description]
 
     #該当ユーザ無しなら新規に作成する
     self.find_or_create_by(provider: provider, uid: uid) do |user|

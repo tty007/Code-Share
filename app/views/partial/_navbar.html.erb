@@ -18,12 +18,19 @@
         <li><a href="#">使い方</a></li>
         <li><a href="#">お問い合わせ</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">使ってみる<span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <% if logged_in? %>
+              設定
+            <% else %>
+              使ってみる
+            <% end %>
+          <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <% if !logged_in? %>
               <li><a href="/auth/twitter/">Twitterでログイン</a></li>
             <% else %>
-              <li><a href="/logout">ログアウト　</a></li>
+              <li><a href="/logout">ログアウト</a></li>
+              <li><a href="/users/show">マイページ</a></li>
             <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="#">開発者に恵みを与える</a></li>
@@ -33,10 +40,3 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-<header>
-  <% if logged_in? %>
-    <%= link_to 'Logout', '/logout' %>
-  <% else %>
-    <%= link_to 'Twitter Login', '/auth/twitter/' %>
-  <% end %>
-</header>
