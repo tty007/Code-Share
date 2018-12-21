@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id          :integer          not null, primary key
+#  provider    :string
+#  uid         :string
+#  user_name   :string
+#  image_url   :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  description :text
+#
+
 class User < ApplicationRecord
 
   def self.find_or_create_from_auth(auth)
@@ -8,12 +22,13 @@ class User < ApplicationRecord
     #user_nameとimageはさらにinfoのネストになっている
     user_name = auth[:info][:name]
     image_url = auth[:info][:image]
-    user_description = auth[:info][:description]
+    user_desc = auth[:info][:description]
 
     #該当ユーザ無しなら新規に作成する
     self.find_or_create_by(provider: provider, uid: uid) do |user|
       user.user_name = user_name
       user.image_url = image_url
+      user.description = user_desc
     end
   end
   
