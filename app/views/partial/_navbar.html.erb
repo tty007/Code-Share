@@ -14,9 +14,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Twicodeって？</a></li>
-        <li><a href="#">使い方</a></li>
-        <li><a href="#">お問い合わせ</a></li>
+        <li><a href="/about">Twicodeって？</a></li>
+        <li><a href="/howtouse">使い方</a></li>
+        <li><a href="/contact">お問い合わせ</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <% if logged_in? %>
@@ -32,6 +32,7 @@
               <li><a href="/logout">ログアウト</a></li>
               <li><%= link_to 'マイページ', profile_path %></li>
               <li><%= link_to 'コードを書く', new_code_path %></li>
+              <li><%= link_to 'コード一覧', codes_path %></li>
             <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="#">開発者に恵みを与える</a></li>

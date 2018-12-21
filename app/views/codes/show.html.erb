@@ -7,6 +7,10 @@
       </div>
     </div>
 
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-chevron-down"></i>
+    </div>
+
     <%# もしもコードユーザが自分なら %>
     <% if current_user.id == @code.user_id %>
     <ul class="nav nav-tabs">
@@ -26,6 +30,6 @@
 
 <% if current_user.id == @code.user_id %>
   <div class="center margin-bottom-wrapper">
-    <button type="button" class="btn btn-danger"><%= link_to "<>#{@code.filename}.twicodeを削除", "/codes/#{@code.uuid}", method: :delete %></button>
+    <button type="button" class="btn btn-danger"><%= link_to "<>#{@code.filename}.twicodeを削除", "/codes/#{@code.uuid}", method: :delete, data: { confirm: '本当に削除しますか？' } %></button>
   </div>
 <% end %>

@@ -1,5 +1,16 @@
-<h1>Codes#index</h1>
-<p>Find me in app/views/codes/index.html.erb</p>
-<% @codes.each do |code| %>
-    <li><%= link_to code.filename, code_path(code) %></li>
-<% end %>
+<div class="center margin-bottom-wrapper code-index-title">
+  <i class="glyphicon glyphicon-console"></i> コード一覧
+</div>
+<div class="center margin-bottom-wrapper">
+  <i class="glyphicon glyphicon-menu-down"></i>
+</div>
+
+<div class="container">
+  <% @codes.each do |code| %>
+    <div class="bs-callout bs-callout-info">
+    <h4><%= link_to code.filename, code_path(code) %></h4>
+    <p><%= code.description %></p>
+    <img src="<%= code.user.image_url %>" class="user_profile_image_code_index"><span class="code-index-user-desc"><%= code.user.user_name %></span>
+    </div>
+  <% end %>
+</div>
