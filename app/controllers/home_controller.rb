@@ -10,4 +10,7 @@ class HomeController < ApplicationController
 
   def contact
   end
+
+  def support
+  end
 end

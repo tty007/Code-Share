@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about'
   get 'contact', to: 'home#contact'
   get 'howtouse', to: 'home#howto'
+  get '/support', to: 'home#support'
 
   #ユーザープロフィール
   get '/profile', to: 'users#show'
