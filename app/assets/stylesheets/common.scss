@@ -9,6 +9,31 @@ body {
     padding-top: 50px;
 }
 
+//Markdown記法説明のためのCSSキャンセル
+.clear_css {
+    h2{
+        font-size: 3.0rem !important;
+        color: initial !important;
+        position: initial !important;
+        padding-bottom: initial !important;
+        border-bottom: initial !important;
+    }
+    h2::after {
+        position: initial !important;
+        bottom: initial !important;
+        left: initial !important;
+        z-index: initial !important;
+        content: initial !important;
+        width: initial !important;
+        height: initial !important;
+        background-color: initial !important;
+    }
+    h3 {
+        padding-bottom: initial !important;
+        border-bottom: initial !important;
+    }
+}
+
 .navbar-brand {
     padding: 0;
 }
@@ -52,4 +77,37 @@ body {
     @include media {
         width: 85%;
     }
+}
+.bg_wrapper-sub {
+    background-color: #efefef;
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    @include media {
+        width: 85%;
+    }
+}
+
+//テーブル
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    line-height: 1.5;
+}
+
+table th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+}
+table td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background: #d9d9d9;
 }

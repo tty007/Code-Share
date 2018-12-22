@@ -1,0 +1,296 @@
+<div class="container">
+  <div class="markdown-wrapper">
+    <h2>Twicodeファイルの作り方</h2>
+    <p>Twicodeは、簡単なものから複雑なものまで、あらゆるプログラムを解説・共有できるサービスです。ここで作成したファイルは、Twicodeファイルと呼ばれます。</p>
+    <p>Twicodeファイルは右上の <i class="glyphicon glyphicon-cog"></i> ボタンから</p>
+    <p><strong>「コードを作成する」</strong>をクリックすることで作成することができます。</p>
+
+    <hr>
+
+    <h2>Markdown記法について</h2>
+    <p>Twicodeでは、エディタに<strong>Markdownエディタ</strong>を採用しています。ユーザはMarkdown記法を使って、より自由な表現でファイルを作成することが可能です。コードも美しく整形され、洗練された見栄えを実現しています</p>
+    <p>以下よりMarkdownの記法について解説します。参考にして下さい。</p>
+
+    <h3>💎見出し</h3>
+<pre class="bg_wrapper-sub">
+# 見出し1
+## 見出し2
+### 見出し3
+#### 見出し4
+##### 見出し5
+###### 見出し6
+</pre>
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+    <div class="clear_css"><%= markdown("
+
+# 見出し1
+## 見出し2
+### 見出し3
+#### 見出し4
+##### 見出し5
+###### 見出し6
+
+").html_safe %>
+    </div>
+
+    <h3>💎引用</h3>
+<pre class="bg_wrapper-sub">
+> "ダブルクォーテーション内では
+改行されません"
+> 引用です
+>> 引用が入れ子になります
+</pre>
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+    <div class="clear_css"><%= markdown("
+> \"ダブルクォーテーション内では
+改行されません\"
+> 引用です
+>> 引用が入れ子になります
+"
+    ).html_safe %>
+    </div>
+
+    <h3>💎コード</h3>
+    <pre class="bg_wrapper-sub">
+```html:sample.twicode
+  &lt;h1&gt;タイトル&lt;/h1&gt;
+  &lt;div class=&quot;description&quot;&gt;
+    &lt;p&gt;これが本文です&lt;/p&gt;
+  &lt;/div&gt;
+```
+</pre>
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+    <div class="clear_css"><%= markdown('
+```html:sample.twicode
+  <h1>タイトル</h1>
+  <div class="description">
+    <p>これが本文です</p>
+  </div>
+```
+'
+    ).html_safe %>
+    </div>
+    <hr>
+  <pre class="bg_wrapper-sub">
+~~~ruby:sample.twicode
+  def sayhello
+    if @twicode == 1
+      puts 'Hello, Twicode.'
+    else
+      @twicode = 1
+      return
+    end
+  end
+~~~
+</pre>
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+~~~ruby:sample.twicode
+  def sayhello
+    if @twicode == 1
+      puts 'Hello, Twicode.'
+    else
+      @twicode = 1
+      return
+    end
+  end
+~~~
+"
+    ).html_safe %>
+    </div>
+    <p>「```」または「~~~」で囲む事によってコードのシンタックスハイライト表示が可能です。行番号が生成される仕様になっているので、全ての行に一段階インデントを入れると見やすくなります。(行番号生成は今後機能として継続するか検討中です)</p>
+    <p>また、「`(バッククォート)」で単語を囲むとインラインコードも作成可能です。</p>
+    <pre class="bg_wrapper-sub">
+これは `インラインコード`です。
+</pre>
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+これは `インラインコード`です。
+"
+    ).html_safe %>
+    </div>
+
+    <h3>💎強調</h3>
+    <pre class="bg_wrapper-sub">
+*イタリック*
+**強調**
+***強調かつイタリック***
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+*イタリック*
+**強調**
+***強調かつイタリック***
+"
+    ).html_safe %>
+    </div>
+
+    <h3>💎リスト</h3>
+    <h4>Ul箇条書きリスト</h4>
+        <pre class="bg_wrapper-sub">
+- リスト1
+    - リスト1_1
+        - リスト1_1_1
+        - リスト1_1_2
+    - リスト1_2
+- リスト2
+- リスト3
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+- リスト1
+    - リスト1-1
+        - リスト1-1-1
+        - リスト1-1-2
+    - リスト1-2
+- リスト2
+- リスト3
+"
+    ).html_safe %>
+    </div>
+    
+    <hr>
+
+    <h4>Ol番号付きリスト</h4>
+    <pre class="bg_wrapper-sub">
+1. リスト1
+    1. リスト1-1
+    1. リスト1-2
+1. リスト2
+1. リスト3
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+1. 番号付きリスト1
+    1. 番号付きリスト1-1
+    1. 番号付きリスト1-2
+1. 番号付きリスト2
+1. 番号付きリスト3
+"
+    ).html_safe %>
+    </div
+    >
+    <hr>
+
+    <p>番号付きリストは数字によらず自動的に番号が振られるため、1. で始めるのを推奨します。また、番号や「-」+空白で書き始める事を忘れないようにしましょう。</p>
+
+    <h3>💎リンク</h3>
+    <p>[表示文字](URL)と記述するとリンクに変換されます。</p>
+    <pre class="bg_wrapper-sub">
+[Google](https://www.google.co.jp/)
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+[Google](https://www.google.co.jp/)
+"
+    ).html_safe %>
+    </div>
+
+    <h3>💎水平線</h3>
+    <p>「*」「-」「_(アンダースコア)」のいずれかを3連続して記述します</p>
+    <pre class="bg_wrapper-sub">
+水平線
+
+***
+
+水平線
+
+---
+
+水平線
+___
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+水平線
+
+***
+
+水平線
+
+---
+
+水平線
+___
+
+"
+    ).html_safe %>
+    </div>
+
+    <h3>💎テーブル</h3>
+    <p>発展的な記述方法ですが、「-(ハイフン)」と「|(パイプ)」を使ってテーブルを作成することも可能です。</p>
+
+    <pre class="bg_wrapper-sub">
+| TH1 | TH2 |
+----|---- 
+| TD1 | TD3 |
+| TD2 | TD4 |
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+| TH1 | TH2 |
+----|---- 
+| TD1 | TD3 |
+| TD2 | TD4 |
+"
+    ).html_safe %>
+    </div>
+
+    <hr>
+
+    <pre class="bg_wrapper-sub">
+| 左揃え | 中央揃え | 右揃え |
+|:---|:---:|---:|
+|1 |2 |3 |
+|4 |5 |6 |
+</pre>
+
+    <div class="center margin-bottom-wrapper">
+      <i class="glyphicon glyphicon-menu-down"></i>
+    </div>
+
+    <div class="clear_css"><%= markdown("
+| 左揃え | 中央揃え | 右揃え |
+|:---|:---:|---:|
+|1 |2 |3 |
+|4 |5 |6 |
+"
+    ).html_safe %>
+    </div>
+</div>

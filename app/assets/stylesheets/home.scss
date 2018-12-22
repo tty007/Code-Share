@@ -1,3 +1,33 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// howto
+.markdown-wrapper {
+    width: 50%;
+    margin: 10px auto;
+    padding: 10px;
+    @include media {
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 2.0rem;
+        color: #3498db;
+        position: relative;
+        padding-bottom: .5em;
+        border-bottom: 4px solid #ccc;
+    }
+    h2::after {
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        z-index: 2;
+        content: '';
+        width: 20%;
+        height: 4px;
+        background-color: #3498db;
+    }
+
+    h3 {
+        padding-bottom: .5em;
+        margin-top: 50px;
+        border-bottom: 1px solid #ccc;
+    }
+}

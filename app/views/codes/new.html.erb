@@ -1,6 +1,6 @@
 <div class="container">
   <div class="center margin-top-wrapper">
-      <%= form_with model: @code, local: true do |f| %>
+      <%= form_with(model: @code, local: true) do |f| %>
         <div class="form-group">
           <%= f.text_field :filename, class: 'form-control', placeholder: 'Filename including extention...' %>
         </div>
