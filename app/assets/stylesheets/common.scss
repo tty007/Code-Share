@@ -9,6 +9,26 @@ body {
     padding-top: 50px;
 }
 
+//turbolinkをオフにした時のリンクデザインをBootstrap3に合わせる
+.no-turbolink {
+    margin: 0;
+    padding: 0;
+    display: inline;
+}
+.dropdown-menu > li > .no-turbolink > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.428571429;
+    color: #333333;
+    white-space: nowrap;
+    text-decoration: none;
+}
+.dropdown-menu > li > .no-turbolink > a:hover {
+    background-color: #eee;
+}
+
 //Markdown記法説明のためのCSSキャンセル
 .clear_css {
     h2{

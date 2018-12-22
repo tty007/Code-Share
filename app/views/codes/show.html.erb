@@ -15,7 +15,7 @@
     <% if current_user.id == @code.user_id %>
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="#">Code</a></li>
-      <li role="presentation"><%= link_to '編集', edit_code_path(@code) %></li>
+      <li role="presentation"><div data-turbolinks="false" class="no-turbolink"><%= link_to '編集', edit_code_path(@code) %></div></li>
     </ul>
     <% end %>
     <div class="panel panel-default">
