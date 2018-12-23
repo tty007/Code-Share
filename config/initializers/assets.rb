@@ -12,7 +12,3 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # application.js, application.css, and all non-JS/CSS in the app/assets
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
-# vendor/javascriptのアセットパイプラインPathを追加
-Rails.application.config.assets.paths << Rails.root.join("vendor", "javascripts")
-# 指定したファイルをコンパイル対象に追加
-Rails.application.config.assets.precompile += %w( *.js )
