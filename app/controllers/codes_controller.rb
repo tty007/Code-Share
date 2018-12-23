@@ -57,12 +57,12 @@ class CodesController < ApplicationController
 
    #/./public/以下を""に切り取る
    def cut_path(url)
-    url.sub(/\.\/public\//, "")
+    url.sub(/\.\/public\/ogp\//, "")
   end
 
   #.piblic/ランダムな文字列/.pngというファイル名に加工する
   def uniq_file_name
-    "./public/#{SecureRandom.hex}.png"
+    "./public/ogp/#{SecureRandom.hex}.png"
   end
 
   #20文字ごとに改行を入れる
