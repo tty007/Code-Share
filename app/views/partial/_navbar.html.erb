@@ -29,10 +29,10 @@
             <% if !logged_in? %>
               <li><a href="/auth/twitter/">Twitterでログイン</a></li>
             <% else %>
-              <li><a href="/logout">ログアウト</a></li>
+              <li><%= link_to 'ログアウト', logout_path %></li>
               <li><%= link_to 'マイページ', profile_path %></li>
-              <li><div data-turbolinks="false" class="no-turbolink"><%= link_to 'コードを作成する', '/codes/new' %></div></li>
-              <li><%= link_to 'コード一覧', '/codes' %></li>
+              <li><div data-turbolinks="false" class="no-turbolink"><%= link_to 'コードを作成する', new_code_path %></div></li>
+              <li><%= link_to 'コード一覧', codes_path %></li>
             <% end %>
             <li role="separator" class="divider"></li>
             <li><a href="/support">開発者に恵みを与える</a></li>

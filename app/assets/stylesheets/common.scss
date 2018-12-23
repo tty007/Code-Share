@@ -1,10 +1,17 @@
 //メディアクエリ定義
 @mixin media($width-media: 700px) {
     @media only screen and (max-width: $width-media) {
-        @content
+        @content;
     }
 }
 
+@mixin media-bootstrap($width-media: 767px) {
+    @media only screen and (max-width: $width-media) {
+        @content;
+    }
+}
+
+//common-settings
 body {
     padding-top: 50px;
 }
@@ -37,6 +44,7 @@ body {
         position: initial !important;
         padding-bottom: initial !important;
         border-bottom: initial !important;
+        margin: 10px 0 !important;
     }
     h2::after {
         position: initial !important;
@@ -51,9 +59,14 @@ body {
     h3 {
         padding-bottom: initial !important;
         border-bottom: initial !important;
+        margin: 10px 0 !important;
+    }
+    .markdown-wrapper h3 {
+        
     }
 }
 
+//navbar
 .navbar-brand {
     padding: 0;
 }
@@ -69,7 +82,20 @@ body {
     top: 0;
     z-index: 10;
 }
+//navbar-bootstrap
+@include media-bootstrap {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > .no-turbolink > a {
+        color: #777;
+    }
+    .navbar-nav .open .dropdown-menu > li > .no-turbolink > a {
+        line-height: 20px;
+    }
+    .navbar-nav .open .dropdown-menu > li > .no-turbolink > a, .navbar-nav .open .dropdown-menu .dropdown-header {
+        padding: 5px 15px 5px 25px;
+    }
+}
 
+//flash-message
 .notice {
     margin: 0 auto;
     width: 100%;
@@ -93,7 +119,7 @@ body {
     width: 70%;
     margin: 30px auto;
     padding: 30px;
-    border-radius: 10px;
+    border-radius: 5px;
     @include media {
         width: 85%;
     }

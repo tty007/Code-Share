@@ -14,6 +14,9 @@
 # -- uuidはSecureRandom.uuidで生成する
 
 class Code < ApplicationRecord
+  #バリデーション
+  validates :filename, presence: true
+
   belongs_to :user
 
   # params[:id]にあたるスラッグをuuidに変更
