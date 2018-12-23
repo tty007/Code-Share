@@ -6,11 +6,27 @@
 </div>
 
 <div class="container">
-  <% @codes.each do |code| %>
-    <div class="bs-callout bs-callout-info">
-    <h4><%= link_to code.filename, code_path(code) %></h4>
-    <p><%= code.description %></p>
-    <img src="<%= code.user.image_url %>" class="user_profile_image_code_index"><span class="code-index-user-desc"><%= code.user.user_name %></span>
+  <% if !logged_in? %>
+    <% @codes[1..5].each do |code| %>
+      <div class="bs-callout bs-callout-info">
+      <h4><%= link_to code.filename, code_path(code) %></h4>
+      <p><%= code.description %></p>
+      <img src="<%= code.user.image_url %>" class="user_profile_image_code_index"><span class="code-index-user-desc"><%= code.user.user_name %></span>
+      </div>
+    <% end %>
+    <div class="continue center">
+      <p>ログインすると、より多くの投稿が閲覧できます。</p>
+      <div class="center">
+        <button type="button" class="btn btn-info"><a href="/auth/twitter/">今すぐTwitterでログインする</a></button>
+      </div>
     </div>
+  <% else %>
+    <% @codes.each do |code| %>
+      <div class="bs-callout bs-callout-info">
+      <h4><%= link_to code.filename, code_path(code) %></h4>
+      <p><%= code.description %></p>
+      <img src="<%= code.user.image_url %>" class="user_profile_image_code_index"><span class="code-index-user-desc"><%= code.user.user_name %></span>
+      </div>
+    <% end %>
   <% end %>
 </div>
