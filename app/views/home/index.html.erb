@@ -1,8 +1,23 @@
-<div class="center scroll-below">
+<div class="center">
   <%= image_tag('twicode-top.png', class: 'top-image') %>
-  <div class="body-wrapper">
-    <p class="top-description">Twicodeで、コードをシェアしよう。</p>
-  </div>
+    <p class="top-description"><i class="glyphicon glyphicon-console"></i>Twicodeで、コードをシェアしよう。</p>
+
+  <section class="service">
+    <h3>ABOUT SERVICE</h3>
+    <div class="bg_wrapper-trans">
+    <p class="left">Twicodeは、ちょっとしたコードから複雑なコードまで、価値のあるコードをTwitterへ簡単に共有できるサービスです。</p>
+    <h4>Share</h4>
+    <%= image_tag('share.png', class: 'top-icons') %>
+    <p>Twicodeで作成したデータは、ワンタップでTwitter上に共有することが可能です。</p>
+    <h4>Comments</h4>
+    <%= image_tag('comments.png', class: 'top-icons') %>
+    <p>それぞれのコードにコメントをすることができます。作成者とディスカッションすることでコードの理解を深めましょう。</p>
+    <h4>Good</h4>
+    <%= image_tag('good.png', class: 'top-icons') %>
+    <p>コードが役に立ったらいいねしましょう。</p>
+    </div>
+  </section>
+
 </div>
 
 <div id="bg1" class="top-background" data-0="background-position:0px 0px;" data-2000="background-position:50px -1000px;"></div>
@@ -11,4 +26,10 @@
 <!-- skrollrの実行コード -->
 <script type="text/javascript">
     var s = skrollr.init();
+
+    // document.addEventListener('skrollr', function (e) {
+    //   var s = skrollr.init();
+    // }, { passive: false });
 </script>
+
+

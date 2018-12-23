@@ -8,18 +8,27 @@
     font-weight: bold;
 }
 
-//test用
-.scroll-below {
-    min-height: 3000px;
+.service {
+    h4 {
+        margin: 10px auto;
+        margin-top: 20px;
+    }
 }
+.top-icons {
+    padding: 20px;
+    width: 30%;
+    @include media {
+        width: 80%;
+    }
+}
+
 //背景画像の設定(skrollr)
 div.top-background {
-    padding:5em;
-    position:fixed;
+    position: fixed;
     top:0;
     left:0;
-    height:100%;
-    width:100%;
+    height:100vh;
+    width:100vw;
     }
 #bg1 {
     background: url(/images/top-front.png) repeat 0 0 scroll;

@@ -11,12 +11,14 @@
       <i class="glyphicon glyphicon-chevron-down"></i>
     </div>
 
-    <%# もしもコードユーザが自分なら %>
-    <% if current_user.id == @code.user_id %>
-    <ul class="nav nav-tabs">
-      <li role="presentation" class="active"><a href="#">Code</a></li>
-      <li role="presentation"><div data-turbolinks="false" class="no-turbolink"><%= link_to '編集', edit_code_path(@code) %></div></li>
-    </ul>
+    <% if logged_in? %>
+      <%# もしもコードユーザが自分なら %>
+      <% if current_user.id == @code.user_id %>
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Code</a></li>
+        <li role="presentation"><div data-turbolinks="false" class="no-turbolink"><%= link_to '編集', edit_code_path(@code) %></div></li>
+      </ul>
+      <% end %>
     <% end %>
     <div class="panel panel-default">
       <div class="panel-heading"><%= "<>#{@code.filename}.twicode" %></div>
@@ -28,8 +30,10 @@
   </div>
 </div>
 
-<% if current_user.id == @code.user_id %>
-  <div class="center margin-bottom-wrapper">
-    <button type="button" class="btn btn-danger"><%= link_to "<>#{@code.filename}.twicodeを削除", "/codes/#{@code.uuid}", method: :delete, data: { confirm: '本当に削除しますか？' } %></button>
-  </div>
+<% if logged_in? %>
+  <% if current_user.id == @code.user_id %>
+    <div class="center margin-bottom-wrapper">
+      <button type="button" class="btn btn-danger"><%= link_to "<>#{@code.filename}.twicodeを削除", "/codes/#{@code.uuid}", method: :delete, data: { confirm: '本当に削除しますか？' } %></button>
+    </div>
+  <% end %>
 <% end %>

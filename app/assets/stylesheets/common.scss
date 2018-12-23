@@ -106,6 +106,9 @@ body {
     text-align: center;
     margin: 0 auto;
 }
+.left {
+    text-align: left;
+}
 
 .margin-top-wrapper {
     margin-top: 20px;
@@ -126,6 +129,15 @@ body {
 }
 .bg_wrapper-sub {
     background-color: #efefef;
+    width: 70%;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 10px;
+    @include media {
+        width: 85%;
+    }
+}
+.bg_wrapper-trans {
     width: 70%;
     margin: 10px auto;
     padding: 10px;
