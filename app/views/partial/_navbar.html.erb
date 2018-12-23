@@ -27,6 +27,7 @@
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <% if !logged_in? %>
+              <li><%= link_to 'コードを覗いてみる', codes_path %></li>
               <li><a href="/auth/twitter/">Twitterでログイン</a></li>
             <% else %>
               <li><%= link_to 'ログアウト', logout_path %></li>
