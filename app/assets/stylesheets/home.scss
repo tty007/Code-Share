@@ -9,14 +9,38 @@
 }
 
 .service {
+    margin-top: 50px;
+    padding: 20px;
+    background-color: rgba(242, 242, 242, 0.5);
     h4 {
         margin: 10px auto;
         margin-top: 20px;
+        position: relative;
+        margin-bottom: 1em;
+    }
+    h4::before {
+        content: '';
+        position: absolute;
+        bottom: -15px;
+        display: inline-block;
+        width: 60px;
+        height: 5px;
+        left: 50%;
+        -moz-transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        background-color: black;
+        border-radius: 2px;
+    }
+    p {
+        font-weight: bold;
     }
 }
 .top-icons {
     padding: 20px;
     width: 30%;
+    border-radius: 50%;
     @include media {
         width: 80%;
     }
