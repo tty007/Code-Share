@@ -12,6 +12,23 @@ body {
     overflow-x:hidden;
 }
 
+div.top-background {
+    padding:5em;
+    position:fixed;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    }
+#bg1 {
+    background: url(/images/top-front.png) repeat 0 0 scroll;
+    z-index: -10;
+}
+#bg2 {
+    background: url(/images/top-back.png) repeat 0 0 scroll;
+    z-index: -11;
+}
+
 // howto
 .markdown-wrapper {
     width: 50%;
