@@ -7,7 +7,7 @@
 
 <div class="container">
   <% if !logged_in? %>
-    <% @codes[1..5].each do |code| %>
+    <% @codes[1..5].reverse.each do |code| %>
       <div class="bs-callout bs-callout-info">
       <h4><%= link_to code.filename, code_path(code) %></h4>
       <p><%= code.description %></p>
@@ -21,7 +21,7 @@
       </div>
     </div>
   <% else %>
-    <% @codes.each do |code| %>
+    <% @codes.reverse.each do |code| %>
       <div class="bs-callout bs-callout-info">
       <h4><%= link_to code.filename, code_path(code) %></h4>
       <p><%= code.description %></p>
