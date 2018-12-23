@@ -16,37 +16,7 @@ class CodesController < ApplicationController
     @code = current_user.codes.build(code_params)
     #uuidを生成する
     @code.uuid = SecureRandom.uuid
-
-    #テキストを書き込みための画像を読み込む（4章でpublickフォルダに追加した画像）
-    image = Magick::ImageList.new('./public/images/twitter-ogp.png')
-    #画像に線や文字を描画するDrawオブジェクトの生成
-    draw = Magick::Draw.new
-    #cut_textの処理結果をtitleに代入
-    title = cut_text(@code.filename)
-
-    #文字の描画（引数は、画像、幅、高さ、X座標、Y座標、描画する文字）
-    draw.annotate(image, 0, 0, 0, -10, title) do
-      #日本語対応可能なフォントにする
-      self.font = 'ArialUnicode'
-      #フォントの塗りつぶし色
-      self.fill = '#fff'
-      #描画基準位置(中央)
-      self.gravity = Magick::CenterGravity
-      #フォントの太さ
-      self.font_weight = Magick::BoldWeight
-      #フォント縁取り色(透過)
-      self.stroke = 'transparent'
-      #フォントサイズ
-      self.pointsize = 38
-    end
-
-    #下に定義したuniq_file_nameメソッドの処理結果のファイル名をimage_pathに代入
-    image_path = image.write(uniq_file_name).filename
-    #下に定義したcut_textメソッド処理の結果をimage_urlを代入
-    image_url = cut_path(image_path)
-    #@jobに作成画像であるimage_urlを追加
-    @code.image_url = image_url
-
+    create_ogp(@code)
 
     if @code.save
       flash[:notice] = "コードを作成しました"
@@ -63,6 +33,8 @@ class CodesController < ApplicationController
 
   def update
     @code = current_user.codes.friendly.find(params[:id])
+    create_ogp(@code)
+
     if @code.update(code_params)
       redirect_to :action => 'show'
     else
@@ -98,4 +70,35 @@ class CodesController < ApplicationController
       text.scan(/.{1,20}/).join("\n")
   end
 
+  def create_ogp(code)
+    #テキストを書き込みための画像を読み込む（4章でpublickフォルダに追加した画像）
+    image = Magick::ImageList.new('./public/images/twitter-ogp.png')
+    #画像に線や文字を描画するDrawオブジェクトの生成
+    draw = Magick::Draw.new
+    #cut_textの処理結果をtitleに代入
+    title = cut_text(code.filename)
+
+    #文字の描画（引数は、画像、幅、高さ、X座標、Y座標、描画する文字）
+    draw.annotate(image, 0, 0, 0, -10, title) do
+      #日本語対応可能なフォントにする
+      self.font = 'ArialUnicode'
+      #フォントの塗りつぶし色
+      self.fill = '#fff'
+      #描画基準位置(中央)
+      self.gravity = Magick::CenterGravity
+      #フォントの太さ
+      self.font_weight = Magick::BoldWeight
+      #フォント縁取り色(透過)
+      self.stroke = 'transparent'
+      #フォントサイズ
+      self.pointsize = 38
+    end
+
+    #下に定義したuniq_file_nameメソッドの処理結果のファイル名をimage_pathに代入
+    image_path = image.write(uniq_file_name).filename
+    #下に定義したcut_textメソッド処理の結果をimage_urlを代入
+    image_url = cut_path(image_path)
+    #@jobに作成画像であるimage_urlを追加
+    code.image_url = image_url
+  end
 end
