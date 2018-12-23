@@ -10,8 +10,8 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  uuid        :string           default("b6bae27f-92f1-4523-875d-34e5f528f6ea"), not null
+#  image_url   :string
 #
-# -- uuidはSecureRandom.uuidで生成する
 
 class Code < ApplicationRecord
   #バリデーション

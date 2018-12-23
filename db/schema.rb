@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_21_074104) do
+ActiveRecord::Schema.define(version: 2018_12_23_135300) do
 
   create_table "codes", force: :cascade do |t|
     t.string "filename"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2018_12_21_074104) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "uuid", default: "b6bae27f-92f1-4523-875d-34e5f528f6ea", null: false
+    t.string "image_url"
     t.index ["user_id"], name: "index_codes_on_user_id"
   end
 

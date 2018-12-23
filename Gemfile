@@ -32,6 +32,9 @@ gem 'jquery-rails'
 gem 'redcarpet'
 gem 'coderay'
 
+#for making ogp image
+gem 'rmagick'
+
 #production-environment
 gem 'pg', group: :production
 
