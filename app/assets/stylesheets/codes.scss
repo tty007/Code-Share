@@ -9,7 +9,7 @@ textarea.textarea-body {
 }
 
 .share-card {
-    width: 50%;
+    width: 60%;
     margin: 20px auto;
     padding: 10px;
     border: 1px #aaa solid;
@@ -21,6 +21,13 @@ textarea.textarea-body {
         padding: 5px;
         background-color: #eee;
     }
+    @include media {
+        width: 100%;
+    }
+}
+
+.margin-bottom-wrapper button.btn.btn-danger a {
+    color: #fff;
 }
 
 // index
