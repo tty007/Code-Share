@@ -1,17 +1,17 @@
-//inndex
+//index
 .top-image {
     width: 100%;
     clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 70%, 0% 100%);
 }
 .top-description {
     font-weight: bold;
 }
 
-body {
-    height: 3000px;
-    overflow-x:hidden;
+.scroll-below {
+    min-height: 3000px;
 }
-
+//背景画像の設定(skrollr)
 div.top-background {
     padding:5em;
     position:fixed;
