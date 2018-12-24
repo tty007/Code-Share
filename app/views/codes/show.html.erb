@@ -1,11 +1,18 @@
 <% content_for :ogp do %>
   <meta property="og:title" content="<%= @code.filename %>" />
   <meta property="og:type" content="article" />
-  <meta property="og:url" content="/codes/<%= @code.uuid %>" />
-  <meta property="og:image" content=<%= "#{root_url}/public/ogp/#{@code.image_url}" %> />
+  <meta property="og:url" content=<%= "https://twicode-share.herokuapp.com/codes/#{@code.uuid}" %> />
+  <meta property="og:image" content=<%= "https://twicode-share.herokuapp.com/ogp/#{@code.image_url}" %> />
   <meta property="og:site_name" content="TwiCode" />
-  <meta property="og:description" content="<%= @code.body %>" />
+  <meta property="og:description" content="<%= @code.description %>" />
+
+  <!--twitterの設定-->
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content=<%= "https://twicode-share.herokuapp.com/codes/#{@code.uuid}" %> />
+  <meta name="twitter:image" content=<%= "https://twicode-share.herokuapp.com/ogp/#{@code.image_url}" %> />
+  <meta name="twitter:title" content="TwiCode">
+  <meta name="twitter:description" content="<%= @code.description %>" />
+
   <%# <meta name="twitter:site" content="@username" /> %>
 <% end %>
 
