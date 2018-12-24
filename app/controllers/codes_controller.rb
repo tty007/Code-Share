@@ -81,7 +81,7 @@ class CodesController < ApplicationController
     #文字の描画（引数は、画像、幅、高さ、X座標、Y座標、描画する文字）
     draw.annotate(image, 0, 0, 0, -10, title) do
       #日本語対応可能なフォントにする
-      self.font = 'AppleMyungjo'
+      self.font = 'ArialUnicode'
       #フォントの塗りつぶし色
       self.fill = '#fff'
       #描画基準位置(中央)
