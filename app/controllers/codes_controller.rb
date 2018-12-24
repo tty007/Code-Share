@@ -22,7 +22,7 @@ class CodesController < ApplicationController
 
     if @code.save
       flash[:notice] = "コードを作成しました"
-      redirect_to :action => 'index'
+      redirect_to codes_url
     else
       flash[:notice] = "エラーが発生しました. もう一度保存して下さい。"
       render :new
@@ -38,7 +38,7 @@ class CodesController < ApplicationController
     create_ogp(@code)
 
     if @code.update(code_params)
-      redirect_to :action => 'show'
+      redirect_to code_url(@code)
     else
       render :edit
     end
