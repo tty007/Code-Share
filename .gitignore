@@ -36,5 +36,4 @@
 .DS_Store
 
 # png-ogp
-./public/ogp
-
+./public/ogp/*

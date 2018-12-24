@@ -1,4 +1,6 @@
 class CodesController < ApplicationController
+  require "fileutils"
+
   def index
     @codes = Code.all
   end
@@ -45,6 +47,12 @@ class CodesController < ApplicationController
   def destroy
     flash[:notice] = 'コードファイルを削除しました。'
     @code = current_user.codes.friendly.find(params[:id])
+
+    # @codeに紐づいた画像も一緒に削除
+    if @code.image_url.present?
+      FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url}")
+    end
+
     @code.destroy
     redirect_to :action => 'index'
   end
@@ -80,7 +88,7 @@ class CodesController < ApplicationController
 
     #文字の描画（引数は、画像、幅、高さ、X座標、Y座標、描画する文字）
     draw.annotate(image, 0, 0, 0, -10, title) do
-      #日本語対応可能なフォントにする
+      #日本語対応可能なフォントにする(rootから読み込み)
       self.font = "#{Rails.root}/.fonts/ipag.ttf"
       #フォントの塗りつぶし色
       self.fill = '#fff'
