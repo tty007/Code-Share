@@ -1,13 +1,35 @@
 <% if logged_in? %>
 	<div class="container">
 		<div class="center">
-			<div class="bg_wrapper center">
+			<div class="bg_wrapper-trans center">
 				<%# ユーザーイメージをオリジナルサイズに置換 %>
 				<p><img src="<%= current_user.image_url.gsub(/_normal/, '') %>" class="user_profile_image"></p>
-				<p><%= current_user.user_name %></p>
+				<p class="username"><%= current_user.user_name %></p>
 				<p class="user-description"><%= current_user.description %></p>			
 			</div>
 		</div>
+
+    <div class="my-files">
+      <div class="row">
+      <% @code.each do | code | %>
+        <%# mdブレークポイントなら3つ、smブレークポイントなら2つ並びでカードを設置 %>
+        <div class="col-sm-6">
+          <div class="thumbnail">
+            <% if code.image_url.blank? %>
+              <%= image_tag("/images/no-image.png", alt: code.filename) %>
+            <% else %>
+              <img src='<%= "https://twicode-share.herokuapp.com/ogp/#{code.image_url}" %>' alt="code.filename">
+            <% end %>     
+            <div class="caption">
+              <h3><%= code.filename %></h3>
+              <p><%= code.description %></p>
+              <p class="center"><a href='<%= "/codes/#{code.uuid}" %>' class="btn btn-default" role="button">コードを見る</a></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
 	</div>
 <% else %>
 	<div class="alert alert-danger" role="alert">不正なページ遷移です。ログインしてください</div>

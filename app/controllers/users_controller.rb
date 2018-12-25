@@ -5,5 +5,6 @@ class UsersController < ApplicationController
   end
 
   def show
+    @code = current_user.codes
   end
 end

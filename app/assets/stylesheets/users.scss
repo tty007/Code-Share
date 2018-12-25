@@ -8,6 +8,7 @@
 }
 
 .user_profile_image {
+    margin-top: 20px;
     height: 200px;
     width: 200px;
     border-radius: 50%;
@@ -18,17 +19,26 @@
         width: 150px;
     }
 }
-
+.username {
+    font-weight: bold;
+}
 .user-description {
     font-weight: bold;
     width: 50%;
     border-radius: 5px;
-    background-color: #bbb;
-    color: #fff;
+    color: rgb(0, 195, 255);
     padding: 10px;
     margin: 10px auto;
     @include media {
         width: 95%;
         font-size: 0.9rem;
+    }
+}
+
+.my-files {
+    width: 60%;
+    margin: 0 auto;
+    @include media {
+        width: 80%;
     }
 }
