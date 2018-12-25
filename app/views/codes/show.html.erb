@@ -48,9 +48,13 @@
   </div>
 </div>
 
+<%# 画像設定 %>
 <div class="bg_wrapper-trans center">
   <div class="share-card">
-    <img class="card-img" src="/ogp/<%= @code.image_url %>" alt="<%= @code.filename %>">
+    <%# OGP画像をフラグメントキャッシュで管理 %>
+    <% cache @code do %>
+      <img class="card-img" src="https://twicode-share.herokuapp.com/ogp/<%= @code.image_url %>" alt="<%= @code.filename %>">
+    <% end %>
     <div class="card-body">
       <h4><%= @code.filename %></h4>
       <p><%= @code.description %></p>
