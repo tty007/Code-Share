@@ -8,6 +8,7 @@ class CodesController < ApplicationController
   def show
     #frendly_idで実装する
     @code = Code.friendly.find(params[:id])
+    @image_url = @code.image_url.sub(/.png/, '')
   end
 
   def new
@@ -50,7 +51,7 @@ class CodesController < ApplicationController
 
     # @codeに紐づいた画像も一緒に削除
     if @code.image_url.present?
-      FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url}")
+      FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url.sub(/.png/, '')}")
     end
 
     @code.destroy

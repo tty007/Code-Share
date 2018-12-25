@@ -18,8 +18,8 @@
             <% if code.image_url.blank? %>
               <%= image_tag("/images/no-image.png", alt: code.filename) %>
             <% else %>
-              <img src='<%= "https://twicode-share.herokuapp.com/ogp/#{code.image_url}" %>' alt="code.filename">
-            <% end %>     
+              <img src='<%= "https://twicode-share.herokuapp.com/ogp/#{code.image_url.sub(/.png/, '')}" %>' alt="code.filename">
+            <% end %>
             <div class="caption">
               <h3><%= code.filename %></h3>
               <p><%= code.description %></p>
