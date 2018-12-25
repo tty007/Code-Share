@@ -60,7 +60,7 @@ class CodesController < ApplicationController
   private
 
   def code_params
-    params.require(:code).permit(%i(filename description body))
+    params.require(:code).permit(%i(filename description body image_url))
   end
 
    #/./public/以下を""に切り取る
