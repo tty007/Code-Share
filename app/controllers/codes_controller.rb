@@ -1,4 +1,5 @@
 class CodesController < ApplicationController
+  # ファイルを削除するためのライブラリ
   require "fileutils"
 
   def index
@@ -8,7 +9,10 @@ class CodesController < ApplicationController
   def show
     #frendly_idで実装する
     @code = Code.friendly.find(params[:id])
-    @image_url = @code.image_url.sub(/.png/, '')
+    # [.png]を削除したurlを取得するためのURL
+    if @code.image_url.present?
+      @image_url = @code.image_url.sub(/\.png/, '')
+    end
   end
 
   def new
@@ -36,7 +40,21 @@ class CodesController < ApplicationController
 
   def update
     @code = current_user.codes.friendly.find(params[:id])
-    create_ogp(@code)
+    # @codeに紐づいた画像も一緒に削除
+    if @code.image_url.present?
+      #ファイルが存在すれば削除
+      if FileTest.exists?("#{Rails.root}/public/ogp/#{@code.image_url}")
+        FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url}")
+        @code.image_url = nil
+      else
+        #なければnilを格納のみ
+        @code.image_url = nil
+      end
+    end
+
+    @code.update_attributes(code_params)
+    # 新たに画像を生成
+    create_ogp(@code)    
 
     if @code.update(code_params)
       redirect_to code_url(@code)
@@ -51,9 +69,12 @@ class CodesController < ApplicationController
 
     # @codeに紐づいた画像も一緒に削除
     if @code.image_url.present?
-      FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url.sub(/.png/, '')}")
+      #ファイルが存在すれば削除
+      if FileTest.exists?("#{Rails.root}/public/ogp/#{@code.image_url}")
+        FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url}")
+      end
     end
-
+    #@codeインスタンスを削除する
     @code.destroy
     redirect_to :action => 'index'
   end
@@ -61,7 +82,7 @@ class CodesController < ApplicationController
   private
 
   def code_params
-    params.require(:code).permit(%i(filename description body image_url))
+    params.require(:code).permit(%i(filename description body))
   end
 
    #/./public/以下を""に切り取る
@@ -69,7 +90,7 @@ class CodesController < ApplicationController
     url.sub(/\.\/public\/ogp\//, "")
   end
 
-  #.piblic/ランダムな文字列/.pngというファイル名に加工する
+  #.piblic/ogp/ランダムな文字列.pngというファイル名に加工し、そのPATHを返す
   def uniq_file_name
     "./public/ogp/#{SecureRandom.hex}.png"
   end
@@ -80,7 +101,7 @@ class CodesController < ApplicationController
   end
 
   def create_ogp(code)
-    #テキストを書き込みための画像を読み込む（4章でpublickフォルダに追加した画像）
+    #テキストを書き込みための画像を読み込む
     image = Magick::ImageList.new('./public/images/twitter-ogp.png')
     #画像に線や文字を描画するDrawオブジェクトの生成
     draw = Magick::Draw.new
@@ -107,7 +128,7 @@ class CodesController < ApplicationController
     image_path = image.write(uniq_file_name).filename
     #下に定義したcut_textメソッド処理の結果をimage_urlを代入
     image_url = cut_path(image_path)
-    #@jobに作成画像であるimage_urlを追加
+    #@codeに作成画像であるimage_urlを追加
     code.image_url = image_url
   end
 end
