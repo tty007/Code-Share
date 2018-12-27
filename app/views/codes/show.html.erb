@@ -10,7 +10,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content=<%= "https://twicode-share.herokuapp.com/codes/#{@code.uuid}" %> />
   <meta name="twitter:image" content=<%= "https://twicode-share.herokuapp.com/ogp/#{@image_url}" %> />
-  <meta name="twitter:title" content="TwiCode">
+  <meta name="twitter:title" content="<%= @code.filename %>">
   <meta name="twitter:description" content="<%= @code.description %>" />
 <% end %>
 
@@ -49,7 +49,7 @@
 <%# 画像設定 %>
 <div class="bg_wrapper-trans center">
   <div class="share-card">   
-      <img class="card-img" src='/ogp/<%= "#{@code.image_url}" %>' alt="<%= @code.filename %>">
+      <img class="card-img" src='https://twicode-share.herokuapp.com/ogp/<%= "#{@code.image_url}" %>' alt="<%= @code.filename %>">
     <div class="card-body">
       <h4><%= @code.filename %></h4>
       <p><%= @code.description %></p>
