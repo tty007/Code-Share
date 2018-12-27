@@ -18,7 +18,7 @@
             <% if code.image_url.blank? %>
               <%= image_tag("/images/no-image.png", alt: code.filename) %>
             <% else %>
-              <img src='/ogp/<%= "#{@code.image_url}" %>' alt="<%= code.filename %>">
+              <img src='/ogp/<%= "#{code.image_url}" %>' alt="<%= code.filename %>">
             <% end %>
             <div class="caption">
               <h3><%= code.filename %></h3>
