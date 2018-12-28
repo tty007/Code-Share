@@ -43,8 +43,10 @@
 
           <%# LikesコントローラではCodeのidが必要になるため、Likeビューをパーシャル化する際に、
           Codeをビューに渡してあげる必要がある。 %>
-          <%= render "likes/like", code: @code %>
-          
+          <span id="code-<%= @code.id %>">
+            <%= render "likes/like", locals: { code: @code } %>
+          </span>
+
         </div>
       </div>
     </div>
