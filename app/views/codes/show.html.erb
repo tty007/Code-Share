@@ -40,6 +40,11 @@
       <div class="panel-heading"><%= "<>#{@code.filename}.twicode" %></div>
         <div class="panel-body">
           <p><%= markdown(@code.body).html_safe %></p>
+
+          <%# LikesコントローラではCodeのidが必要になるため、Likeビューをパーシャル化する際に、
+          Codeをビューに渡してあげる必要がある。 %>
+          <%= render "likes/like", code: @code %>
+          
         </div>
       </div>
     </div>

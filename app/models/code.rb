@@ -18,9 +18,26 @@ class Code < ApplicationRecord
   validates :filename, presence: true
 
   belongs_to :user
+  has_many :likes, dependent: :destroy
+  has_many :like_users, through: :likes, source: :user
 
   # params[:id]にあたるスラッグをuuidに変更
   # Code.friendly.find(params[:id])のように検索
   extend FriendlyId
   friendly_id :uuid
+
+  # 現在のユーザーがいいねしてたらtrueを返す
+  def like?(user)
+    like_users.include?(user)
+  end
+
+  # codeをいいねする
+  def like(user)
+    likes.create(user_id: user.id)
+  end
+
+  # codeのいいねを解除する
+  def unlike(user)
+    likes.find_by(user_id: user.id).destroy
+  end
 end

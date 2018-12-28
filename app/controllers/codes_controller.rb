@@ -131,4 +131,14 @@ class CodesController < ApplicationController
     #@codeに作成画像であるimage_urlを追加
     code.image_url = image_url
   end
+
+  # コードにいいねする
+  def like(user)
+    likes.create(user_id: user.id)
+  end
+
+  # コードのいいねを解除する
+  def unlike(user)
+    likes.find_by(user_id: user.id).destroy
+  end
 end
