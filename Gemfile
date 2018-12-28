@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'annotate'
 gem 'friendly_id'
+gem 'counter_culture', '~> 2.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

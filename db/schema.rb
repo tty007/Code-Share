@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_28_030625) do
+ActiveRecord::Schema.define(version: 2018_12_28_131708) do
 
   create_table "codes", force: :cascade do |t|
     t.string "filename"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_12_28_030625) do
     t.datetime "updated_at", null: false
     t.string "uuid", default: "b6bae27f-92f1-4523-875d-34e5f528f6ea", null: false
     t.string "image_url"
+    t.integer "likes_count"
     t.index ["user_id"], name: "index_codes_on_user_id"
   end
 
