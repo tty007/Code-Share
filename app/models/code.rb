@@ -32,8 +32,8 @@ class Code < ApplicationRecord
   end
 
   # codeをいいねする
-  def like(user)
-    likes.create(user_id: user.id)
+  def like(user, code)
+    likes.create(user_id: user.id, code_id: code.id)
   end
 
   # codeのいいねを解除する

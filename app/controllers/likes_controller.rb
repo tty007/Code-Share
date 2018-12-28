@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   def create
     @code = Code.friendly.find(params[:code_id])
     unless @code.like?(current_user)
-      @code.like(current_user)
+      @code.like(current_user, @code)
       @code.reload
       respond_to do |format|
         # リファラーとは、該当ページに遷移する直前に閲覧されていた参照元（遷移元・リンク元）ページのURL
