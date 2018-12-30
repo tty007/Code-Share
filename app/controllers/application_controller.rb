@@ -26,7 +26,8 @@ class ApplicationController < ActionController::Base
   def authenticate
     return if logged_in?
     #sessionがなければルートにリダイレクト
-    redirect_to root_path, alert: "ログインしてください"
+    flash[:notice] = "ログインが必要です"
+    redirect_to root_path
   end
 
 end
