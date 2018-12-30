@@ -51,6 +51,44 @@
       </div>
     </div>
   </div>
+
+  <div class="center">
+    <h5>コメント一覧</h5>
+      <% if @code.comments.nil? %>
+        <div class="center">
+          <p>まだコメントはありません</p>
+        </div>
+      <% else %>
+        
+        <% @code.comments.each do |c| %>
+          <div>
+            <p><%= c.user.user_name %></p>
+            <p><%= c.content %></p>
+            <hr>
+          </div>
+        <% end %>
+      <% end %>
+    
+    <% if logged_in? %>
+    <%# ログインユーザならばコメント可能 %>
+    <div class="container">
+      <h5>コメントする</h5>
+        <%= form_with(model: @code.comments.build , local: true, url: code_comments_path(@code)) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :content, class: 'form-control' %>
+          </div>
+          <%= f.submit 'コメントする', class: 'btn btn-success' %>
+        <% end %>
+      <% else %>
+      <%# ログインユーザでなければコメント不可 %>
+        <div class="alart">
+          <p>ログインするとコメントできるようになります。</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  
 </div>
 
 <%# 画像設定 %>

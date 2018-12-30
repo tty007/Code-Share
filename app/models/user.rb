@@ -16,6 +16,7 @@ class User < ApplicationRecord
 
   has_many :codes, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   def self.find_or_create_from_auth(auth)
     #providerはTwitterのはず

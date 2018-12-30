@@ -11,6 +11,7 @@
 #  updated_at  :datetime         not null
 #  uuid        :string           default("b6bae27f-92f1-4523-875d-34e5f528f6ea"), not null
 #  image_url   :string
+#  likes_count :integer
 #
 
 class Code < ApplicationRecord
@@ -19,6 +20,7 @@ class Code < ApplicationRecord
 
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
 
   # params[:id]にあたるスラッグをuuidに変更

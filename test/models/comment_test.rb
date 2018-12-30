@@ -1,17 +1,18 @@
 # == Schema Information
 #
-# Table name: likes
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  code_id    :integer          not null
+#  content    :string
+#  user_id    :integer
+#  code_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
 require 'test_helper'
 
-class LikeTest < ActiveSupport::TestCase
+class CommentTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
