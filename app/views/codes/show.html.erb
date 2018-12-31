@@ -61,11 +61,33 @@
       <% else %>
         
         <% @code.comments.each do |c| %>
-          <div>
-            <p><%= c.user.user_name %></p>
-            <p><%= c.content %></p>
-            <hr>
-          </div>
+          <% if c.user == current_user %>
+          <%# もしコメントが自分であれば、右寄せ %>
+            <div class="comment container">
+              <div class="comment-icon">
+                <img src="<%= c.user.image_url %>">
+                <p><%= c.user.user_name %></p>
+              </div>
+              <div class="chat">
+                <div class="comment-description">
+                  <p><%= c.content %></p>
+                </div>
+              </div>
+            </div>
+          <% else %>
+          <%# 自分以外のコメントの場合 %>
+            <div class="comment-other container">
+              <div class="comment-other-icon">
+                <img src="<%= c.user.image_url %>">
+                <p><%= c.user.user_name %></p>
+              </div>
+              <div class="chat-other">
+                <div class="comment-other-description">
+                  <p><%= c.content %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     
