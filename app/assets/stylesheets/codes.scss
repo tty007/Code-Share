@@ -62,6 +62,9 @@ textarea.textarea-body {
     max-width: 80%;
     border-radius: 12px;
     background: #edf1ee;
+    @include media {
+        max-width: 60%;
+    }
 }
 
 .comment-other-description:after {
@@ -79,6 +82,7 @@ textarea.textarea-body {
 .comment-other-description p {
     margin: 0;
     padding: 0;
+    word-wrap: break-word;
 }
 
 //右側
@@ -120,6 +124,10 @@ textarea.textarea-body {
     max-width: 80%;
     border-radius: 12px;
     background: #30e852;
+    word-wrap: break-word;
+    @include media {
+        max-width: 60%;
+    }
 }
 
 .comment-description p:after {
