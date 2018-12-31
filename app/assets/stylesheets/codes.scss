@@ -111,6 +111,9 @@ textarea.textarea-body {
 
 .comment-description {
     margin: 10px 0;
+    a {
+        padding: 5px;
+    }
 }
 .comment-description p{
     display: inline-block;
