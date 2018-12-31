@@ -17,6 +17,11 @@ class CodesController < ApplicationController
     end
   end
 
+  def ranking
+    #groupメソッドでcode_idが同じものをグループに分ける
+    @rank = Note.find(Like.group(:code_id).order('count(code_id) desc').limit(5).pluck(:code_id))
+  end
+
   def new
     @code = current_user.codes.build
   end
