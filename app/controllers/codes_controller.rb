@@ -9,6 +9,8 @@ class CodesController < ApplicationController
   def show
     #frendly_idで実装する
     @code = Code.friendly.find(params[:id])
+    #コメントインスタンスを生成
+    # @comment = @code.comments.build
     # [.png]を削除したurlを取得するためのURL
     if @code.image_url.present?
       @image_url = @code.image_url.sub(/\.png/, '')

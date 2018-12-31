@@ -30,9 +30,121 @@ textarea.textarea-body {
     color: #fff;
 }
 
+<<<<<<< HEAD
 .glyphicon-heart {
     color: rgb(255, 0, 34);
 }
+=======
+//index-comment
+
+//左側（他ユーザ）
+.comment-other {
+    display: flex;
+    padding: 10px;
+    flex-direction: row;
+    align-items: center;
+}
+.comment-other-icon {
+    img {
+        border-radius: 50%;
+    }
+    margin-right: 20px;
+    p {
+        color: #aaa;
+    }
+}
+
+.chat-other {
+    width: 100%;
+    text-align: left;
+}
+
+.comment-other-description {
+    display: inline-block;
+    position: relative; 
+    margin: 0 0 0 10px;
+    padding: 10px;
+    max-width: 80%;
+    border-radius: 12px;
+    background: #edf1ee;
+}
+
+.comment-other-description:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 3px; 
+    left: -19px;
+    border: 8px solid transparent;
+    border-right: 18px solid #edf1ee;
+    -ms-transform: rotate(35deg);
+    -webkit-transform: rotate(35deg);
+    transform: rotate(35deg);
+}
+.comment-other-description p {
+    margin: 0;
+    padding: 0;
+}
+
+//右側
+.comment {
+    display: flex;
+    padding: 10px;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+.comment-icon {
+    img {
+        border-radius: 50%;
+    }
+    margin-left: 20px;
+    p {
+        color: #aaa;
+    }
+}
+
+.chat {
+    width: 100%;
+    text-align: right;
+    p {
+        text-align: left;
+    }
+}
+
+.comment-description {
+    margin: 10px 0;
+}
+.comment-description p{
+    display: inline-block;
+    position: relative; 
+    margin: 0 10px 0 0;
+    padding: 8px;
+    max-width: 80%;
+    border-radius: 12px;
+    background: #30e852;
+}
+
+.comment-description p:after {
+    content: "";
+    position: absolute;
+    top: 3px; 
+    right: -19px;
+    border: 8px solid transparent;
+    border-left: 18px solid #30e852;
+    -ms-transform: rotate(-35deg);
+    -webkit-transform: rotate(-35deg);
+    transform: rotate(-35deg);
+}
+
+//最終調整
+.comment, .comment-other {
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+>>>>>>> develop
 
 // index
 .code-index-title {

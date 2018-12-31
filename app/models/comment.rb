@@ -1,20 +1,19 @@
 # == Schema Information
 #
-# Table name: likes
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  code_id    :integer          not null
+#  content    :string
+#  user_id    :integer
+#  code_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Like < ApplicationRecord
+class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :code
-
-  counter_culture :code
-
+  #バリデーション
   validates :user_id, presence: true
   validates :code_id, presence: true
 end

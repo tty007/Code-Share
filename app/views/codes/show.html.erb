@@ -51,6 +51,66 @@
       </div>
     </div>
   </div>
+
+  <div class="center">
+    <h5>コメント一覧</h5>
+      <% if @code.comments.nil? %>
+        <div class="center">
+          <p>まだコメントはありません</p>
+        </div>
+      <% else %>
+        
+        <% @code.comments.each do |c| %>
+          <% if c.user == current_user %>
+          <%# もしコメントが自分であれば、右寄せ %>
+            <div class="comment container">
+              <div class="comment-icon">
+                <img src="<%= c.user.image_url %>">
+                <p><%= c.user.user_name %></p>
+              </div>
+              <div class="chat">
+                <div class="comment-description">
+                  <p><%= c.content %></p>
+                </div>
+              </div>
+            </div>
+          <% else %>
+          <%# 自分以外のコメントの場合 %>
+            <div class="comment-other container">
+              <div class="comment-other-icon">
+                <img src="<%= c.user.image_url %>">
+                <p><%= c.user.user_name %></p>
+              </div>
+              <div class="chat-other">
+                <div class="comment-other-description">
+                  <p><%= c.content %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    
+    <% if logged_in? %>
+    <%# ログインユーザならばコメント可能 %>
+    <div class="container">
+      <h5>コメントする</h5>
+        <%= form_with(model: @code.comments.build , local: true, url: code_comments_path(@code)) do |f| %>
+          <div class="form-group">
+            <%= f.text_field :content, class: 'form-control' %>
+          </div>
+          <%= f.submit 'コメントする', class: 'btn btn-success' %>
+        <% end %>
+      <% else %>
+      <%# ログインユーザでなければコメント不可 %>
+        <div class="alart">
+          <p>ログインするとコメントできるようになります。</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  
 </div>
 
 <%# 画像設定 %>

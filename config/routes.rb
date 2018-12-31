@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :codes do
     resources :likes, only: [:create]
     delete '/likes', to: 'likes#destroy', as: 'like'
+    resources :comments, only: %i(create destroy)
   end
   #Twitter用のルーティング
   get '/auth/:provider/callback', to: 'sessions#create'

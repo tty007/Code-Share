@@ -1,10 +1,11 @@
 # == Schema Information
 #
-# Table name: likes
+# Table name: comments
 #
 #  id         :integer          not null, primary key
-#  user_id    :integer          not null
-#  code_id    :integer          not null
+#  content    :string
+#  user_id    :integer
+#  code_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -12,9 +13,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user_id: 1
-  code_id: 1
+  content: MyString
+  user: one
+  code: one
 
 two:
-  user_id: 1
-  code_id: 1
+  content: MyString
+  user: two
+  code: two
