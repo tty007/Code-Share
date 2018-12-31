@@ -70,6 +70,7 @@
               </div>
               <div class="chat">
                 <div class="comment-description">
+                  <%= link_to(content_tag(:i, '', class: 'glyphicon glyphicon-trash'), code_comment_path(@code, c), :method => :delete) %>
                   <p><%= c.content %></p>
                 </div>
               </div>
