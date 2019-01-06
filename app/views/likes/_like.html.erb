@@ -1,20 +1,62 @@
-<% if !current_user?(@code.user) %>
-    <span class="like">
-    <% if @code.like?(current_user) %>
-      <%# 良いね済みであれば %>
-      <%= form_with(model: @code.likes.find_by(user_id: current_user.id), url: code_like_path(@code.uuid), method: :delete, remote: true) do |f| %>
-        <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%= content_tag :span, "#{@code.likes_count}", class: "glyphicon glyphicon-heart" %>
+<% if logged_in? %>
+
+
+  <% if !current_user?(@code.user) %>
+      <span class="like">
+      <% if @code.like?(current_user) %>
+        <%# 良いね済みであれば %>
+        <%= form_with(model: @code.likes.find_by(user_id: current_user.id), url: code_like_path(@code.uuid), method: :delete, remote: true) do |f| %>
+          <%= button_tag(class: "btn btn-default btn-xs") do %>
+            <%= content_tag :span, "#{@code.likes_count}", class: "glyphicon glyphicon-heart" %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%# 良いね済みでなければ %>
+        <%= form_with(model: @code.likes.build, url: code_likes_path(@code.uuid), remote: true) do |f| %>
+          <div><%= hidden_field_tag :code_id, @code.id %></div>
+          <%= button_tag(class: "btn btn-default btn-xs") do %>
+            <%= content_tag :span, "#{@code.likes_count}", class: "glyphicon glyphicon-heart-empty" %>
+          <% end %>
         <% end %>
       <% end %>
-    <% else %>
-      <%# 良いね済みでなければ %>
-      <%= form_with(model: @code.likes.build, url: code_likes_path(@code.uuid), remote: true) do |f| %>
-        <div><%= hidden_field_tag :code_id, @code.id %></div>
-        <%= button_tag(class: "btn btn-default btn-xs") do %>
-          <%= content_tag :span, "#{@code.likes_count}", class: "glyphicon glyphicon-heart-empty" %>
-        <% end %>
-      <% end %>
-    <% end %>
-  </span>
+    </span>
+  <% end %>
+
+
+<% else %>
+
+
+  <%= button_tag(class: "btn btn-default btn-xs") do %>
+    <%= content_tag :span, "#{@code.likes_count}", class: "glyphicon glyphicon-heart-empty", id: "login-modal" %>
+  <% end %>
+
+  <div id="mask" class="hidden"></div>
+  <div id="modal" class="hidden">
+      <p>Twitterでのログインが必要です。</p>
+      <div id="close">Close</div>
+  </div>
+
+
+  <script>
+    let loginmodal = document.getElementById('login-modal');
+    let mask = document.getElementById('mask');
+    let modal = document.getElementById('modal');
+    let close = document.getElementById('close');
+
+    loginmodal.addEventListener('click', function(){
+        modal.className = '';
+        mask.className = '';
+    });
+
+    close.addEventListener('click', function(){
+        modal.className = 'hidden';
+        mask.className = 'hidden';
+    });
+
+    mask.addEventListener('click', function(){
+        close.click();
+    });
+  </script>
+
+
 <% end %>

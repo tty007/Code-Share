@@ -19,7 +19,9 @@ class CodesController < ApplicationController
 
   def ranking
     #groupメソッドでcode_idが同じものをグループに分ける
-    @rank = Note.find(Like.group(:code_id).order('count(code_id) desc').limit(5).pluck(:code_id))
+    #order('count(id) desc')で、idの数でオーダーを降順でつける（つまり多い順から）
+    #pluckでそのカラムのみの情報を取り出し値を返す
+    @rank = Code.find(Like.group(:code_id).order('count(code_id) desc').limit(20).pluck(:code_id))
   end
 
   def new

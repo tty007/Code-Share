@@ -1,1 +1,7 @@
-ランキングページです
+<div class="container">
+  <h2>TwiCodeランキング</h2>
+
+  <% @rank.each do |rank| %>
+  <p><%= rank.filename %><%= rank.likes_count %></p>
+  <% end %>
+</div>

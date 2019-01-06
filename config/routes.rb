@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   get '/profile', to: 'users#show'
   #Codeモデルに対するリソースルート生成
   resources :codes do
+    collection do
+      get 'ranking'
+    end
     resources :likes, only: [:create]
     delete '/likes', to: 'likes#destroy', as: 'like'
     resources :comments, only: %i(create destroy)

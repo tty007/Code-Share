@@ -6,10 +6,19 @@
 </div>
 
 <div class="container">
+  <ul class="code-links">
+    <li class="active nav-box"><a href="/codes">最新投稿一覧</a></li>
+    <li class="nav-box"><a href="/codes/ranking">ランキング<i class="glyphicon glyphicon-stats"></i></a></li>
+    <li class="nav-box"><a href="#">トレンド<i class="glyphicon glyphicon-signal"></i></a></li>
+  </ul>
   <% if !logged_in? %>
     <% @codes.last(5).reverse.each do |code| %>
       <div class="bs-callout bs-callout-info">
-      <h4><%= link_to code.filename, code_path(code) %></h4>
+      <h4>
+        <div data-turbolinks="false" class="no-turbolink">
+        <%= link_to code.filename, code_path(code) %>
+        </div>
+      </h4>
       <p><%= code.description %></p>
       <img src="<%= code.user.image_url %>" class="user_profile_image_code_index"><span class="code-index-user-desc"><%= code.user.user_name %></span>
       </div>
