@@ -17,6 +17,8 @@
 class Code < ApplicationRecord
   #バリデーション
   validates :filename, presence: true
+  #carrierwaveの設定（マウント）
+  mount_uploader :image_url, ImageUploader
 
   belongs_to :user
   has_many :likes, dependent: :destroy

@@ -41,7 +41,7 @@ gem 'pg', group: :production
 
 # for image uploader with AWS S3
 gem 'carrierwave'
-gem 'fog'
+# gem 'fog'
 gem 'fog-aws'
 
 
