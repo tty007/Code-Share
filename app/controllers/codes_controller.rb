@@ -132,7 +132,7 @@ class CodesController < ApplicationController
     end
 
     #下に定義したuniq_file_nameメソッドの処理結果のファイル名をmy_fileに代入
-    my_file = image.write(uniq_file_name)
+    my_file = image.write("./public/ogp/#{uniq_file_name}")
 
     #@codeに作成画像であるimage_urlを追加
     code.image_url = my_file.filename
