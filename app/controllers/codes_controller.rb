@@ -61,7 +61,7 @@ class CodesController < ApplicationController
 
     @code.update_attributes(code_params)
     # 新たに画像を生成
-    create_ogp(@code)    
+    create_ogp(@code)
 
     if @code.update(code_params)
       redirect_to code_url(@code)
@@ -99,7 +99,7 @@ class CodesController < ApplicationController
 
   #.piblic/ogp/ランダムな文字列.pngというファイル名に加工し、そのPATHを返す
   def uniq_file_name
-    "./public/ogp/#{SecureRandom.hex}.png"
+    "#{SecureRandom.hex}.png"
   end
 
   #20文字ごとに改行を入れる
@@ -131,12 +131,19 @@ class CodesController < ApplicationController
       self.pointsize = 38
     end
 
-    #下に定義したuniq_file_nameメソッドの処理結果のファイル名をimage_pathに代入
-    image_path = image.write(uniq_file_name).filename
-    #下に定義したcut_textメソッド処理の結果をimage_urlを代入
-    image_url = cut_path(image_path)
+    #下に定義したuniq_file_nameメソッドの処理結果のファイル名をmy_fileに代入
+    my_file = image.write(uniq_file_name)
+
     #@codeに作成画像であるimage_urlを追加
-    code.image_url = image_url
+    code.image_url = my_file.filename
+
+    #S3に画像をアップロード
+    uploader = ImageUploader.new
+    uploader.store!(File.open(my_file))
+
+    #下に定義したcut_textメソッド処理の結果をimage_urlを代入
+    # image_url = cut_path(image_path)
+    
   end
 
   # コードにいいねする
