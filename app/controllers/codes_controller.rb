@@ -131,19 +131,19 @@ class CodesController < ApplicationController
       self.pointsize = 38
     end
 
-    #下に定義したuniq_file_nameメソッドの処理結果のファイル名をmy_fileに代入
-    my_file = image.write("./public/ogp/#{uniq_file_name}")
+    #定義したuniq_file_nameメソッドの処理結果のファイル名をimage_pathに代入
+    image_path = image.write("./public/ogp/#{uniq_file_name}").filename
+
+    #定義したcut_textメソッド処理の結果をimage_urlを代入
+    image_url = cut_path(image_path)
 
     #@codeに作成画像であるimage_urlを追加
-    code.image_url = my_file.filename
+    code.image_url = image_url
 
     #S3に画像をアップロード
     uploader = ImageUploader.new
-    uploader.store!(File.open(my_file))
+    uploader.store!(image_url)
 
-    #下に定義したcut_textメソッド処理の結果をimage_urlを代入
-    # image_url = cut_path(image_path)
-    
   end
 
   # コードにいいねする
