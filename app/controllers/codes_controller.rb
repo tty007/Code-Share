@@ -13,7 +13,8 @@ class CodesController < ApplicationController
     # @comment = @code.comments.build
     # [.png]を削除したurlを取得するためのURL
     if @code.image_url.present?
-      @image_url = @code.image_url.sub(/\.png/, '')
+      # @image_url = @code.image_url.sub(/\.png/, '')
+      @image_url = @code.image_url
     end
   end
 
@@ -48,16 +49,16 @@ class CodesController < ApplicationController
   def update
     @code = current_user.codes.friendly.find(params[:id])
     # @codeに紐づいた画像も一緒に削除
-    if @code.image_url.present?
-      #ファイルが存在すれば削除
-      if FileTest.exists?("#{Rails.root}/public/ogp/#{@code.image_url}")
-        FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url}")
-        @code.image_url = nil
-      else
-        #なければnilを格納のみ
-        @code.image_url = nil
-      end
-    end
+    # if @code.image_url.present?
+    #   #ファイルが存在すれば削除
+    #   if FileTest.exists?("#{Rails.root}/public/ogp/#{@code.image_url}")
+    #     FileUtils.rm("#{Rails.root}/public/ogp/#{@code.image_url}")
+    #     @code.image_url = nil
+    #   else
+    #     #なければnilを格納のみ
+    #     @code.image_url = nil
+    #   end
+    # end
 
     @code.update_attributes(code_params)
     # 新たに画像を生成
@@ -110,6 +111,7 @@ class CodesController < ApplicationController
   def create_ogp(code)
     #テキストを書き込みための画像を読み込む
     image = Magick::ImageList.new('./public/images/twitter-ogp.png')
+    binding.pry
     #画像に線や文字を描画するDrawオブジェクトの生成
     draw = Magick::Draw.new
     #cut_textの処理結果をtitleに代入
@@ -137,6 +139,11 @@ class CodesController < ApplicationController
     image_url = cut_path(image_path)
     #@codeに作成画像であるimage_urlを追加
     code.image_url = image_url
+
+    #S3に画像をアップロード
+    uploader = ImageUploader.new
+    uploader.store!(image)
+
   end
 
   # コードにいいねする
