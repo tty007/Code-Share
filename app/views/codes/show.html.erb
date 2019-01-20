@@ -46,7 +46,7 @@
           <span id="code-<%= @code.id %>">
             <%= render "likes/like", locals: { code: @code } %>
           </span>
-          
+
         </div>
       </div>
     </div>
@@ -77,7 +77,7 @@
             </div>
           <% else %>
           <%# 自分以外のコメントの場合 %>
-            <div class="comment-other container">
+            <div class="comment-other container" style="display: flex">
               <div class="comment-other-icon">
                 <img src="<%= c.user.image_url %>">
                 <p><%= c.user.user_name %></p>
