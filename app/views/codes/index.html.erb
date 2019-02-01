@@ -6,11 +6,9 @@
 </div>
 
 <div class="container">
-  <ul class="code-links">
-    <li class="active nav-box"><a href="/codes">最新投稿一覧</a></li>
-    <li class="nav-box"><a href="/codes/ranking">ランキング<i class="glyphicon glyphicon-stats"></i></a></li>
-    <li class="nav-box"><a href="#">トレンド<i class="glyphicon glyphicon-signal"></i></a></li>
-  </ul>
+  <div class="center">
+    <button class="center ranking-button"><a href="/codes/ranking">ランキングへ<i class="glyphicon glyphicon-stats"></i></a></button>
+  </div>
   <% if !logged_in? %>
     <% @codes.last(5).reverse.each do |code| %>
       <div class="bs-callout bs-callout-info">

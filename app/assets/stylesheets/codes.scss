@@ -1,3 +1,12 @@
+@keyframes floating{
+    0% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(3px);
+    }
+}
+
 // show
 textarea.textarea-body {
     height: 400px;
@@ -153,6 +162,18 @@ textarea.textarea-body {
 
 
 // index
+.ranking-button {
+    padding: 10px;
+    background-color: rgb(0, 130, 125);
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    animation: floating 0.5s ease-in-out infinite alternate;
+    a {
+        color: #fff;
+    }
+}
+
 .code-index-title {
     font-weight: bold;
     font-size: 1.5rem;
