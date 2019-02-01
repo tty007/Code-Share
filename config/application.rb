@@ -21,5 +21,7 @@ module CodeShare
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies # Required for all session management
     config.middleware.use ActionDispatch::Session::CookieStore, config.session_options
+
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
   end
 end

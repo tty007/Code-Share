@@ -1,6 +1,7 @@
 require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
+require 'carrierwave/orm/activerecord'
 
 CarrierWave.configure do |config|
   # fog_providerをfog-awsにする

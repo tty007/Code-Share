@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # storage :fog
   # dtevelopmentとtest環境ではlocal, productionではfog
   if Rails.env.development?
-    storage :file
+    storage :fog
   elsif Rails.env.test?
     storage :file
   else
