@@ -23,6 +23,11 @@ textarea.textarea-body {
     padding: 10px;
     border: 1px #aaa solid;
     border-radius: 5px;
+
+    .ogp-wrapper {
+        max-height: 150px;
+        overflow-y: hidden;
+    }
     .card-img {
         width: 100%;
     }
@@ -43,6 +48,10 @@ textarea.textarea-body {
     color: rgb(255, 0, 34);
 }
 //index-comment
+
+.comment-cneter {
+    width: 80%;
+}
 
 //左側（他ユーザ）
 .comment-other {
@@ -133,7 +142,7 @@ textarea.textarea-body {
     position: relative; 
     margin: 0 10px 0 0;
     padding: 8px;
-    max-width: 80%;
+    max-width: 50%;
     border-radius: 12px;
     background: #30e852;
     word-wrap: break-word;
@@ -152,6 +161,15 @@ textarea.textarea-body {
     -ms-transform: rotate(-35deg);
     -webkit-transform: rotate(-35deg);
     transform: rotate(-35deg);
+}
+
+.comment-write-box {
+    height: 100px;
+    width: 50%;
+    margin: 10px auto;
+    @include media {
+        width: 90%;
+    }
 }
 
 //最終調整

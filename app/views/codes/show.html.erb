@@ -2,14 +2,14 @@
   <meta property="og:title" content="<%= @code.filename %>" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content=<%= "https://twicode-share.herokuapp.com/codes/#{@code.uuid}" %> />
-  <meta property="og:image" content=<%= "https://twicode-share.herokuapp.com/ogp/#{@image_url}" %> />
+  <meta property="og:image" content="" />
   <meta property="og:site_name" content="TwiCode" />
   <meta property="og:description" content="<%= @code.description %>" />
 
   <!--twitterの設定-->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content=<%= "https://twicode-share.herokuapp.com/codes/#{@code.uuid}" %> />
-  <meta name="twitter:image" content=<%= "https://twicode-share.herokuapp.com/ogp/#{@image_url}" %> />
+  <meta name="twitter:image" content="" />
   <meta name="twitter:title" content="<%= @code.filename %>">
   <meta name="twitter:description" content="<%= @code.description %>" />
 <% end %>
@@ -36,7 +36,7 @@
       </ul>
       <% end %>
     <% end %>
-    <div class="panel panel-default">
+    <div class="panel panel-default" id="tocanvas">
       <div class="panel-heading"><%= "<>#{@code.filename}.twicode" %></div>
         <div class="panel-body">
           <p><%= markdown(@code.body).html_safe %></p>
@@ -52,8 +52,8 @@
     </div>
   </div>
 
-  <div class="center">
-    <h5>コメント一覧</h5>
+  <div class="center comment-center">
+    <h5 class="comment-index">コメント一覧</h5>
       <% if @code.comments.nil? %>
         <div class="center">
           <p>まだコメントはありません</p>
@@ -98,7 +98,7 @@
       <h5>コメントする</h5>
         <%= form_with(model: @code.comments.build , local: true, url: code_comments_path(@code)) do |f| %>
           <div class="form-group">
-            <%= f.text_field :content, class: 'form-control' %>
+            <%= f.text_field :content, class: 'form-control comment-write-box' %>
           </div>
           <%= f.submit 'コメントする', class: 'btn btn-success' %>
         <% end %>
@@ -116,8 +116,10 @@
 
 <%# 画像設定 %>
 <div class="bg_wrapper-trans center">
-  <div class="share-card">   
-      <img class="card-img" src='https://twicode-share.herokuapp.com/ogp/<%= "#{@code.image_url}" %>' alt="<%= @code.filename %>">
+  <div class="share-card">
+    <div class="ogp-wrapper">
+      <img src="" id="result" alt="<%= @code.filename %>" class="card-img" />
+    </div>
     <div class="card-body">
       <h4><%= @code.filename %></h4>
       <p><%= @code.description %></p>
@@ -125,6 +127,22 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script>
+  //ロードされた際の処理として実施：
+  window.onload = function(){
+    //HTML内に画像を表示
+    html2canvas(document.getElementById("tocanvas"),{
+      onrendered: function(canvas){
+        var imgData = canvas.toDataURL();
+        document.getElementById("result").src = imgData;
+        document.getElementsByTagName("meta")[6].content = imgData;
+        document.getElementsByTagName("meta")[11].content = imgData;
+      }
+    });
+  }
+</script>
 
 <% if logged_in? %>
   <% if current_user.id == @code.user_id %>
