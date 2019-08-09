@@ -1,5 +1,5 @@
 <div class="center margin-bottom-wrapper code-index-title">
-  <i class="glyphicon glyphicon-console"></i> コード一覧
+  <i class="glyphicon glyphicon-console"></i> ランキング一覧
 </div>
 <div class="center margin-bottom-wrapper">
   <i class="glyphicon glyphicon-menu-down"></i>
@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="center">
-    <button class="center ranking-button"><a href="/codes/ranking">ランキングへ<i class="glyphicon glyphicon-stats"></i></a></button>
+    <button class="center ranking-button"><a href="/codes/">最新投稿一覧へ<i class="glyphicon glyphicon-stats"></i></a></button>
   </div>
   <% if !logged_in? %>
     <% @codes.last(5).reverse.each do |code| %>

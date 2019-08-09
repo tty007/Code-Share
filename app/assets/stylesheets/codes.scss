@@ -1,3 +1,12 @@
+@keyframes floating{
+    0% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(3px);
+    }
+}
+
 // show
 textarea.textarea-body {
     height: 400px;
@@ -14,6 +23,11 @@ textarea.textarea-body {
     padding: 10px;
     border: 1px #aaa solid;
     border-radius: 5px;
+
+    .ogp-wrapper {
+        max-height: 150px;
+        overflow-y: hidden;
+    }
     .card-img {
         width: 100%;
     }
@@ -30,7 +44,14 @@ textarea.textarea-body {
     color: #fff;
 }
 
+.glyphicon-heart {
+    color: rgb(255, 0, 34);
+}
 //index-comment
+
+.comment-cneter {
+    width: 80%;
+}
 
 //左側（他ユーザ）
 .comment-other {
@@ -62,6 +83,9 @@ textarea.textarea-body {
     max-width: 80%;
     border-radius: 12px;
     background: #edf1ee;
+    @include media {
+        max-width: 60%;
+    }
 }
 
 .comment-other-description:after {
@@ -79,6 +103,7 @@ textarea.textarea-body {
 .comment-other-description p {
     margin: 0;
     padding: 0;
+    word-wrap: break-word;
 }
 
 //右側
@@ -117,9 +142,13 @@ textarea.textarea-body {
     position: relative; 
     margin: 0 10px 0 0;
     padding: 8px;
-    max-width: 80%;
+    max-width: 50%;
     border-radius: 12px;
     background: #30e852;
+    word-wrap: break-word;
+    @include media {
+        max-width: 60%;
+    }
 }
 
 .comment-description p:after {
@@ -134,16 +163,38 @@ textarea.textarea-body {
     transform: rotate(-35deg);
 }
 
+.comment-write-box {
+    height: 100px;
+    width: 50%;
+    margin: 10px auto;
+    @include media {
+        width: 90%;
+    }
+}
+
 //最終調整
 .comment, .comment-other {
     margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 0;
     padding-top: 0;
+    margin-bottom: 10px;
 }
 
 
 // index
+.ranking-button {
+    padding: 10px;
+    background-color: rgb(0, 130, 125);
+    font-weight: bold;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    animation: floating 0.5s ease-in-out infinite alternate;
+    a {
+        color: #fff;
+    }
+}
+
 .code-index-title {
     font-weight: bold;
     font-size: 1.5rem;

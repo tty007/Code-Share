@@ -1,5 +1,7 @@
 {
   "name": "code-share",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "html2canvas": "^1.0.0-alpha.12"
+  }
 }

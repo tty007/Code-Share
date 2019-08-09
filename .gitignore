@@ -36,7 +36,11 @@
 .DS_Store
 
 # png-ogp
+<<<<<<< HEAD
 ./public/ogp/*
 
 # .fog
 /.fog
+=======
+./public/ogp
+>>>>>>> to_s3
