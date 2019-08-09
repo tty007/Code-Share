@@ -17,6 +17,10 @@
 class Code < ApplicationRecord
   #バリデーション
   validates :filename, presence: true
+  mount_uploader :image_url, ImageUploader
+
+  #active_storage
+  has_one_attached :image_url
 
   belongs_to :user
   has_many :likes, dependent: :destroy

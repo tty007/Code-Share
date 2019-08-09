@@ -109,10 +109,12 @@
         </div>
       <% end %>
     </div>
-  </div>
-
-  
+  </div>  
 </div>
+
+<%= form_with model: @code do |form| %>
+  <%= form.file_field :image_url, type: 'hidden', value: '', id: 'imgform' %>
+<% end %>
 
 <%# 画像設定 %>
 <div class="bg_wrapper-trans center">
@@ -137,10 +139,17 @@
       onrendered: function(canvas){
         var imgData = canvas.toDataURL();
         document.getElementById("result").src = imgData;
-        document.getElementsByTagName("meta")[6].content = imgData;
-        document.getElementsByTagName("meta")[11].content = imgData;
+
+        sendData = canvas.toDataURL("image/png");
+        form = document.getElementById("imgform")
+        form.value = sendData;
+        form.submit();
       }
     });
+  }
+  function checkText() {
+    //入力ボックスの内容を表示する
+    alert( document.myform.imagedata.value );
   }
 </script>
 

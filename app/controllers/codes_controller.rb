@@ -6,9 +6,9 @@ class CodesController < ApplicationController
 
   def show
     @code = Code.friendly.find(params[:id])
-    if @code.image_url.present?
-      @image_url = @code.image_url.sub(/\.png/, '')
-    end
+    # if @code.image_url.present?
+    #   @image_url = @code.image_url.sub(/\.png/, '')
+    # end
   end
 
   def new
@@ -56,7 +56,7 @@ class CodesController < ApplicationController
     private
 
   def code_params
-    params.require(:code).permit(%i(filename description body))
+    params.require(:code).permit(%i(filename description body image_url))
   end
 
   def cut_path(url)

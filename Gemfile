@@ -36,6 +36,11 @@ gem 'coderay'
 #for making ogp image
 gem 'rmagick'
 
+# aws(saving image)
+gem 'carrierwave'
+gem 'fog-aws'
+gem "aws-sdk-s3", require: false
+
 #production-environment
 gem 'pg', group: :production
 
